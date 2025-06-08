@@ -19,7 +19,7 @@ pipeline{
             steps{
                 script{
                     echo 'Setting up our virtual environment and installing dependencies'
-                    sh '''#!/bin/bash // REMOVED -el OPTIONS
+                    sh '''#!/bin/bash // THIS LINE WAS THE PROBLEM - ONLY THIS LINE SHOULD BE HERE
                     python -m venv ${VENV_DIR}
                     source ${VENV_DIR}/bin/activate
                     pip install --upgrade pip
