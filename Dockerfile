@@ -8,11 +8,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Set the working directory
 WORKDIR /app
 
-# Install system dependencies required by LightGBM and now, for building Python packages
+# Install system dependencies required by LightGBM and for building Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
-    build-essential \ // ADDED
-    python3-dev \   // ADDED
+    build-essential \
+    python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
