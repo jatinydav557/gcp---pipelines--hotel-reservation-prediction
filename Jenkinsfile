@@ -15,13 +15,13 @@ pipeline{
             }
         }
 
-        stage('Setting up out virtual environment and installing dependencies'){
+        stage('Setting up our virtual environment and installing dependencies'){ // Corrected typo: "out" to "our"
             steps{
                 script{
-                    echo 'Setting up out virtual environment and installing dependencies'
+                    echo 'Setting up our virtual environment and installing dependencies'
                     sh '''
                     python -m venv ${VENV_DIR}
-                    .${VENV_DIR}/bin/activate
+                    source ${VENV_DIR}/bin/activate  // CORRECTED LINE: Changed '.' to 'source'
                     pip install --upgrade pip
                     pip install -e .
                     '''
