@@ -19,7 +19,7 @@ pipeline{
             steps{
                 script{
                     echo 'Setting up our virtual environment and installing dependencies'
-                    sh '''#!/bin/bash -el  // ADDED SHEBANG LINE AND -el for login environment
+                    sh '''#!/bin/bash // REMOVED -el OPTIONS
                     python -m venv ${VENV_DIR}
                     source ${VENV_DIR}/bin/activate
                     pip install --upgrade pip
