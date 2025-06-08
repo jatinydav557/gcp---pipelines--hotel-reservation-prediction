@@ -15,13 +15,13 @@ pipeline{
             }
         }
 
-        stage('Setting up our virtual environment and installing dependencies'){ // Corrected typo: "out" to "our"
+        stage('Setting up our virtual environment and installing dependencies'){
             steps{
                 script{
                     echo 'Setting up our virtual environment and installing dependencies'
-                    sh '''
+                    sh '''#!/bin/bash -el  // ADDED SHEBANG LINE AND -el for login environment
                     python -m venv ${VENV_DIR}
-                    source ${VENV_DIR}/bin/activate  // CORRECTED LINE: Changed '.' to 'source'
+                    source ${VENV_DIR}/bin/activate
                     pip install --upgrade pip
                     pip install -e .
                     '''
