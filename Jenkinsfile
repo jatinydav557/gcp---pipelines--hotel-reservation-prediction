@@ -31,10 +31,8 @@ pipeline{
             }
         }
 
-        // CORRECTED NESTING: This stage should be at the same level as other stages
         stage('Building and pushing docker image to GCR'){
             steps{
-                // Ensure 'gcp-key' is a 'Secret File' credential in Jenkins
                 withCredentials([file(credentialsId : 'gcp-key' ,variable : 'GOOGLE_APPLICATION_CREDENTIALS')]){
                     script{
                         echo 'Building and pushing docker image to GCR......'
@@ -43,9 +41,9 @@ pipeline{
                         export PATH=$PATH:${GCLOUD_PATH}
 
                         # Authenticate gcloud using the service account key
-                        gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} --project=${GCP_PROJECT} # Added --project for explicit project setting
+                        gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} --project=${GCP_PROJECT}
 
-                        # Set the gcloud project (redundant if set in activate-service-account, but harmless)
+                        # Set the gcloud project (this is redundant but harmless if set in activate-service-account)
                         gcloud config set project ${GCP_PROJECT}
 
                         # Configure Docker to use gcloud for authentication with GCR
@@ -56,7 +54,33 @@ pipeline{
 
                         # Push the Docker image to Google Container Registry
                         docker push gcr.io/${GCP_PROJECT}/ml-project:latest
+                        '''
+                    }
+                }
+            }
+        }
 
+        stage('Deploy to google cloud run'){
+            steps{
+                withCredentials([file(credentialsId : 'gcp-key' ,variable : 'GOOGLE_APPLICATION_CREDENTIALS')]){
+                    script{
+                        echo 'Deploy to google cloud run......'
+                        sh '''#!/bin/bash
+                        # Add gcloud to PATH for this script block
+                        export PATH=$PATH:${GCLOUD_PATH}
+
+                        # Authenticate gcloud using the service account key
+                        gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} --project=${GCP_PROJECT}
+
+                        # Set the gcloud project (this is redundant but harmless)
+                        gcloud config set project ${GCP_PROJECT}
+
+                        # Deploy the image to Google Cloud Run
+                        gcloud run deploy ml-project \\
+                            --image=gcr.io/${GCP_PROJECT}/ml-project:latest \\
+                            --platform=managed \\
+                            --region=us-central1 \\
+                            --allow-unauthenticated
                         '''
                     }
                 }
