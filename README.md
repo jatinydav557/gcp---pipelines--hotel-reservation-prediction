@@ -1,7 +1,4 @@
-I'd be glad to help you create a `README.md` file for your Hotel Reservation project, structured similarly to your Network Security project.
-
-Here's the `README.md` content, incorporating all the details you provided for your hotel reservation project:
-
+🔗 👉 **[Watch the Demo on YouTube](https://www.youtube.com/watch?v=gwA_81X7AiM&list=PLe-YIIlt-fbOSpBoaPA6TyB3S25WSf5sL&index=4&ab_channel=Jatin)**
 ```markdown
 # 🏨 Hotel Reservation Prediction: An End-to-End MLOps Pipeline
 
@@ -175,7 +172,7 @@ Developing this end-to-end MLOps pipeline presented several interesting challeng
 
 ## 🤝 Credits
 
-* [Your Name/Organization Here]
+* [Jatin Yadav]
 * [MLflow](https://mlflow.org/)
 * [Docker](https://www.docker.com/)
 * [Jenkins](https://www.jenkins.io/)
@@ -185,11 +182,14 @@ Developing this end-to-end MLOps pipeline presented several interesting challeng
 
 ---
 
-## 🙋‍♂️ Let's Connect
-
-* **💼 LinkedIn:** [Your LinkedIn Profile URL]
-* **📦 GitHub:** [Your GitHub Profile URL]
-* **📬 Email:** your@email.com
 
 Made with ❤️ by an AI enthusiast who transforms ML, NLP, DL, GenAI, and MLOps concepts into practical, impactful solutions.
 ```
+
+## 🙋‍♂️ Let's Connect
+
+* **💼 LinkedIn:** [www.linkedin.com/in/jatin557](https://www.linkedin.com/in/jatin557)
+* **📦 GitHub:** [https://github.com/jatinydav557](https://github.com/jatinydav557)
+* **📬 Email:** [jatinydav557@gmail.com](mailto:jatinydav557@gmail.com)
+* **📱 Contact:** [`+91-7340386035`](tel:+917340386035)
+* **🎥 YouTube:** [Checkout my other working projects](https://www.youtube.com/@jatinML/playlists)
